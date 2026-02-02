@@ -80,7 +80,7 @@ const Hero2 = () => {
     mt-[100px] ml-[150px]              /* 📱 mobile positioning */
   "
   initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
+  animate={{ opacity: 1, x: -80, y: -90 }}
   transition={{ delay: 0.4, duration: 0.3 }}
 />
 
