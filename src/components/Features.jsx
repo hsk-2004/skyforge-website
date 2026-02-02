@@ -4,7 +4,7 @@ const FeaturesSection = () => {
   const features = [
     {
       title: "Data Centralisation",
-      image: "/public/dc.png",
+      image: "/dc.png",
       bg: "bg-[#eef5fb]",
     },
     {
