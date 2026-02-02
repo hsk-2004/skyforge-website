@@ -9,22 +9,22 @@ const FeaturesSection = () => {
     },
     {
       title: "Text Extraction OCR",
-      image: "/public/teo.png",
+      image: "/teo.png",
       bg: "bg-[#f3f0fb]",
     },
     {
       title: "Intelligent Search",
-      image: "/public/is.png",
+      image: "/is.png",
       bg: "bg-[#fbf0f5]",
     },
     {
       title: "Integration with Existing Platforms",
-      image: "/public/iep.png",
+      image: "/iep.png",
       bg: "bg-[#f1faf3]",
     },
     {
       title: "Automation of Enterprise Workflows",
-      image: "/public/aew.png",
+      image: "/aew.png",
       bg: "bg-[#faf4ef]",
     },
   ];
