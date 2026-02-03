@@ -41,7 +41,7 @@ const Hero2 = () => {
             className="relative"
           >
             {/* FLOW WRAPPER */}
-            <div className="relative flex flex-col items-center">
+            <div className="relative flex flex-col items-center lg:-ml-24">
 
               {/* TOP NODE */}
               <motion.div
@@ -61,7 +61,7 @@ const Hero2 = () => {
   <div
     className="
       bg-white rounded-2xl shadow-lg p-4 flex items-center gap-3 max-w-xs
-      lg:translate-x-[-80px] lg:translate-y-[-80px]
+      lg:translate-x-[-80px] lg:translate-y-[-115px]
       hover:shadow-2xl transition-shadow duration-0
     "
   >
@@ -76,7 +76,7 @@ const Hero2 = () => {
 </motion.div>
 
 <motion.img
-  src="/line1.svg"   // you can reuse same svg if you want
+  src="/line1.svg"
   alt="connector-mobile"
   className="
     h-[100px] w-auto my-2 pointer-events-none opacity-80
@@ -99,7 +99,7 @@ const Hero2 = () => {
     hidden lg:block        /* 💻 show on laptop, hide on mobile */
   "
   initial={{ opacity: 0, x: 0, y: 0 }}
-  animate={{ opacity: 1, x: -80, y: -90 }}
+  animate={{ opacity: 1, x: -85, y: -125 }}
   transition={{ delay: 0.4, duration: 0.3 }}
 />
 
@@ -120,7 +120,7 @@ const Hero2 = () => {
       flex items-center gap-3 max-w-xs
 
       top-[-100px] left-[1px]          /* 📱 MOBILE: move box */
-      lg:top-0 lg:left-0              /* 💻 DESKTOP unchanged */
+      lg:top-[-40px] lg:left-0              /* 💻 DESKTOP unchanged */
       lg:translate-x-[-80px] lg:translate-y-[-100px]
       hover:shadow-2xl transition-shadow duration-0
     "
@@ -137,17 +137,38 @@ const Hero2 = () => {
 
 
             </div>
-            <motion.img
+           <motion.img
   src="/line2.svg"
-  alt="connector"
-  className="h-[100px] w-auto my-2 pointer-events-none opacity-80"
+  alt="connector-mobile"
+  className="
+    h-[80px] w-auto my-2
+    pointer-events-none opacity-80
+    block lg:hidden        /* 📱 show on mobile only */
+  "
   initial={{ opacity: 0, x: 0, y: 0 }}
-  animate={{ opacity: 1, x: 75, y: -110 }}   // <-- MOVE HERE
+  animate={{ opacity: 1, x: 95, y: -110 }}   // mobile-specific movement
+  transition={{ delay: 0.3, duration: 0.3 }}
+/>
+
+<motion.img
+  src="/line2.svg"
+  alt="connector-desktop"
+  className="
+    h-[100px] w-auto my-2
+    pointer-events-none opacity-80
+    hidden lg:block        /* 💻 show on desktop only */
+    lg:-ml-24
+  "
+  initial={{ opacity: 0, x: 0, y: 0 }}
+  animate={{ opacity: 1, x: 120, y: -150}} // desktop-specific movement
   transition={{ delay: 0.4, duration: 0.3 }}
 />
 
+
+
+
             {/* BOTTOM ROW */}
-            <div className="grid grid-cols-2 gap-4 mt-10">
+            <div className="grid grid-cols-2 gap-4 mt-10 lg:-ml-24">
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -165,7 +186,7 @@ const Hero2 = () => {
     text-center
 
     -mt-[150px]          /* 📱 mobile SAME */
-    lg:-top-[-5px]      /* 💻 desktop UP */
+    lg:-top-[40px]      /* 💻 desktop UP */
     lg:-left-[60px]      /* 💻 desktop LEFT */
     hover:shadow-2xl transition-shadow duration-0
   "
@@ -210,7 +231,7 @@ const Hero2 = () => {
     text-center
 
     -mt-[150px]          /* 📱 mobile SAME */
-    lg:-top-[-5px]      /* 💻 desktop UP */
+    lg:-top-[40px]      /* 💻 desktop UP */
     lg:-left-[60px]      /* 💻 desktop LEFT */
     hover:shadow-2xl transition-shadow duration-0
   "
