@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const FeaturesSection = () => {
   const features = [
@@ -34,7 +35,13 @@ const FeaturesSection = () => {
       <div className="max-w-5xl mx-auto">
 
         {/* ===== TOP TEXT ===== */}
-        <div className="max-w-3xl mb-10">
+        <motion.div 
+          className="max-w-3xl mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-[28px] sm:text-[32px] md:text-[36px] font-medium text-black mb-3 leading-tight">
             Unlock GenAI's Efficiency for Your Organisation
           </h2>
@@ -42,7 +49,7 @@ const FeaturesSection = () => {
             Our solutions centralise, structure, and power your enterprise data
             with AI — making your workflows truly AI-native.
           </p>
-        </div>
+        </motion.div>
 
         {/* ===== FEATURE CONTAINER ===== */}
         <div className="bg-[#f7f6f4] rounded-[32px] p-5 sm:p-8">
@@ -53,9 +60,9 @@ const FeaturesSection = () => {
 
           {/* ================= MOBILE SLIDER ================= */}
           <div className="sm:hidden">
-            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4">
+            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide">
               {features.map((item, index) => (
-                <div
+                <motion.div
                   key={index}
                   className={`
                     ${item.bg}
@@ -66,7 +73,11 @@ const FeaturesSection = () => {
                     flex-shrink-0
                     text-center
                     flex flex-col items-center justify-center
+                    cursor-pointer
+                    shadow-md
                   `}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0 }}
                 >
                   <img
                     src={item.image}
@@ -76,7 +87,7 @@ const FeaturesSection = () => {
                   <h3 className="text-sm font-medium text-black leading-snug">
                     {item.title}
                   </h3>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -87,9 +98,26 @@ const FeaturesSection = () => {
             {/* TOP ROW */}
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
               {features.slice(0, 3).map((item, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className={`${item.bg} rounded-[20px] p-6 text-center flex flex-col items-center justify-center`}
+                  className={`
+                    ${item.bg} 
+                    rounded-[20px] 
+                    p-6 
+                    text-center 
+                    flex flex-col items-center justify-center
+                    cursor-pointer
+                    shadow-md
+                    hover:shadow-2xl
+                    transition-shadow
+                    duration-0
+                  `}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.06, y: -8 }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   <img
                     src={item.image}
@@ -99,7 +127,7 @@ const FeaturesSection = () => {
                   <h3 className="text-sm font-medium text-black leading-snug">
                     {item.title}
                   </h3>
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -107,9 +135,26 @@ const FeaturesSection = () => {
             <div className="flex justify-center">
               <div className="grid grid-cols-2 gap-6 max-w-2xl">
                 {features.slice(3, 5).map((item, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className={`${item.bg} rounded-[20px] p-6 text-center flex flex-col items-center justify-center`}
+                    className={`
+                      ${item.bg} 
+                      rounded-[20px] 
+                      p-6 
+                      text-center 
+                      flex flex-col items-center justify-center
+                      cursor-pointer
+                      shadow-md
+                      hover:shadow-2xl
+                      transition-shadow
+                      duration-0
+                    `}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
+                    whileHover={{ scale: 1.06, y: -8 }}
+                    whileTap={{ scale: 0.97 }}
                   >
                     <img
                       src={item.image}
@@ -119,7 +164,7 @@ const FeaturesSection = () => {
                     <h3 className="text-sm font-medium text-black leading-snug">
                       {item.title}
                     </h3>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

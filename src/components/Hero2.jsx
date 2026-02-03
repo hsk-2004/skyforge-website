@@ -47,18 +47,22 @@ const Hero2 = () => {
               <motion.div
   initial={{ opacity: 0, y: -20 }}
   animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.3 }}
+  whileHover={{ scale: 1.05, y: -4 }}
+  whileTap={{ scale: 0.98 }}
+  transition={{ delay: 0.3, duration: 0 }}
   className="
     z-10
     mt-[-50px] ml-6          /* 📱 Mobile: down + right */
     sm:mt-4 sm:ml-4   /* 📲 Tablet */
     lg:mt-0 lg:ml-0   /* 💻 Desktop (UNTOUCHED) */
+    cursor-pointer
   "
 >
   <div
     className="
       bg-white rounded-2xl shadow-lg p-4 flex items-center gap-3 max-w-xs
       lg:translate-x-[-80px] lg:translate-y-[-80px]
+      hover:shadow-2xl transition-shadow duration-0
     "
   >
     <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
@@ -104,8 +108,10 @@ const Hero2 = () => {
               <motion.div
   initial={{ opacity: 0, scale: 0 }}
   animate={{ opacity: 1, scale: 1 }}
-  transition={{ delay: 0.6 }}
-  className="relative z-10"
+  whileHover={{ scale: 1.05, y: -4 }}
+  whileTap={{ scale: 0.98 }}
+  transition={{ delay: 0.6, duration: 0 }}
+  className="relative z-10 cursor-pointer"
 >
   <div
     className="
@@ -116,6 +122,7 @@ const Hero2 = () => {
       top-[-100px] left-[1px]          /* 📱 MOBILE: move box */
       lg:top-0 lg:left-0              /* 💻 DESKTOP unchanged */
       lg:translate-x-[-80px] lg:translate-y-[-100px]
+      hover:shadow-2xl transition-shadow duration-0
     "
   >
     <div className="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center">
@@ -144,7 +151,10 @@ const Hero2 = () => {
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.8 }}
+    whileHover={{ scale: 1.05, y: -4 }}
+    whileTap={{ scale: 0.98 }}
+    transition={{ delay: 0.8, duration: 0 }}
+    className="cursor-pointer"
   >
     <div
       className="
@@ -157,6 +167,7 @@ const Hero2 = () => {
     -mt-[150px]          /* 📱 mobile SAME */
     lg:-top-[-5px]      /* 💻 desktop UP */
     lg:-left-[60px]      /* 💻 desktop LEFT */
+    hover:shadow-2xl transition-shadow duration-0
   "
 
     >
@@ -185,7 +196,10 @@ const Hero2 = () => {
               <motion.div
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 1 }}
+  whileHover={{ scale: 1.05, y: -4 }}
+  whileTap={{ scale: 0.98 }}
+  transition={{ delay: 1, duration: 0 }}
+  className="cursor-pointer"
 >
   <div
     className="
@@ -198,6 +212,7 @@ const Hero2 = () => {
     -mt-[150px]          /* 📱 mobile SAME */
     lg:-top-[-5px]      /* 💻 desktop UP */
     lg:-left-[60px]      /* 💻 desktop LEFT */
+    hover:shadow-2xl transition-shadow duration-0
   "
   >
     <div
