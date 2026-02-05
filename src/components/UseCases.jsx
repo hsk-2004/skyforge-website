@@ -8,18 +8,70 @@ const UseCases = () => {
     date: "Jul 28, 2025",
   });
 
+  // Container animation for staggered children
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  // Individual word animation
+  const wordVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      filter: "blur(4px)"
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.5,
+        ease: [0.25, 0.4, 0.25, 1],
+      },
+    },
+  };
+
   return (
     <section className="bg-[#e9e7e4] py-24 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <motion.h2 
-          className="text-[32px] md:text-[40px] font-medium text-black mb-10 md:mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          className="text-[32px] md:text-[40px] font-medium text-black mb-10 md:mb-14"
         >
-          Explore Use-Cases Insights
+          <motion.span variants={wordVariants} className="inline-block mr-2">
+            Explore
+          </motion.span>
+          <motion.span variants={wordVariants} className="inline-block mr-2 relative">
+            Use-Cases
+            <motion.span
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ 
+                duration: 0.5, 
+                delay: 0.7,
+                ease: "easeOut" 
+              }}
+              className="
+                absolute bottom-0 left-0 w-full h-[2px] origin-left
+                bg-gradient-to-r from-indigo-500 to-purple-500
+              "
+            />
+          </motion.span>
+          <motion.span variants={wordVariants} className="inline-block">
+            Insights
+          </motion.span>
         </motion.h2>
 
         {/* ================= MOBILE SLIDER ================= */}
@@ -29,8 +81,7 @@ const UseCases = () => {
               <motion.div
                 key={index}
                 className="snap-center min-w-[280px] bg-white rounded-[28px] p-6 flex flex-col justify-between min-h-[260px] cursor-pointer shadow-md"
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0 }}
+                whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
               >
                 {/* Top */}
                 <div>
@@ -63,13 +114,13 @@ const UseCases = () => {
           {cards.map((item, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[260px] cursor-pointer shadow-md hover:shadow-2xl transition-shadow duration-0"
+              className="bg-white rounded-[28px] p-8 flex flex-col justify-between min-h-[260px] cursor-pointer shadow-md hover:shadow-2xl transition-shadow duration-200"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -8 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.05, y: -8, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.97, transition: { duration: 0.1 } }}
             >
               {/* Top */}
               <div>
@@ -87,9 +138,16 @@ const UseCases = () => {
               {/* Bottom */}
               <div className="mt-8 flex items-center justify-between">
                 <motion.button 
-                  className="bg-[#f2f2f2] text-sm px-4 py-2 rounded-full flex items-center gap-2"
-                  whileHover={{ backgroundColor: "#d9d9d9", scale: 1.05 }}
-                  transition={{ duration: 0 }}
+                  className="bg-[#f2f2f2] text-sm px-4 py-2 rounded-full flex items-center gap-2 transition-colors duration-200"
+                  whileHover={{ 
+                    backgroundColor: "#d9d9d9", 
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ 
+                    scale: 0.95,
+                    transition: { duration: 0.1 }
+                  }}
                 >
                   Read story <span>↗</span>
                 </motion.button>

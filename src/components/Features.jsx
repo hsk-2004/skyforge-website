@@ -30,6 +30,36 @@ const FeaturesSection = () => {
     },
   ];
 
+  // Container animation for staggered children
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  // Individual word animation
+  const wordVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      filter: "blur(4px)"
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.5,
+        ease: [0.25, 0.4, 0.25, 1],
+      },
+    },
+  };
+
   return (
     <section className="bg-[#e9e7e4] py-16 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
@@ -42,13 +72,56 @@ const FeaturesSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-[28px] sm:text-[32px] md:text-[36px] font-medium text-black mb-3 leading-tight">
-            Unlock GenAI's Efficiency for Your Organisation
-          </h2>
-          <p className="text-sm text-gray-600 leading-relaxed">
+          <motion.h2 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-[28px] sm:text-[32px] md:text-[36px] font-medium text-black mb-3 leading-tight"
+          >
+            <motion.span variants={wordVariants} className="inline-block mr-2">
+              Unlock
+            </motion.span>
+            <motion.span variants={wordVariants} className="inline-block mr-2 relative">
+              GenAI's
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 0.6,
+                  ease: "easeOut" 
+                }}
+                className="
+                  absolute bottom-0 left-0 w-full h-[2px] origin-left
+                  bg-gradient-to-r from-blue-500 to-purple-500
+                "
+              />
+            </motion.span>
+            <motion.span variants={wordVariants} className="inline-block mr-2">
+              Efficiency
+            </motion.span>
+            <motion.span variants={wordVariants} className="inline-block mr-2">
+              for
+            </motion.span>
+            <motion.span variants={wordVariants} className="inline-block mr-2">
+              Your
+            </motion.span>
+            <motion.span variants={wordVariants} className="inline-block">
+              Organisation
+            </motion.span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-sm text-gray-600 leading-relaxed"
+          >
             Our solutions centralise, structure, and power your enterprise data
             with AI — making your workflows truly AI-native.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* ===== FEATURE CONTAINER ===== */}
@@ -76,8 +149,7 @@ const FeaturesSection = () => {
                     cursor-pointer
                     shadow-md
                   `}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0 }}
+                  whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
                 >
                   <img
                     src={item.image}
@@ -110,14 +182,14 @@ const FeaturesSection = () => {
                     shadow-md
                     hover:shadow-2xl
                     transition-shadow
-                    duration-0
+                    duration-200
                   `}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.06, y: -8 }}
-                  whileTap={{ scale: 0.97 }}
+                  whileHover={{ scale: 1.06, y: -8, transition: { duration: 0.2 } }}
+                  whileTap={{ scale: 0.97, transition: { duration: 0.1 } }}
                 >
                   <img
                     src={item.image}
@@ -147,14 +219,14 @@ const FeaturesSection = () => {
                       shadow-md
                       hover:shadow-2xl
                       transition-shadow
-                      duration-0
+                      duration-200
                     `}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
-                    whileHover={{ scale: 1.06, y: -8 }}
-                    whileTap={{ scale: 0.97 }}
+                    whileHover={{ scale: 1.06, y: -8, transition: { duration: 0.2 } }}
+                    whileTap={{ scale: 0.97, transition: { duration: 0.1 } }}
                   >
                     <img
                       src={item.image}
